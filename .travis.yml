@@ -1,12 +1,29 @@
 language: node_js
-node_js:
-  - 4.2.3
-matrix:
-  fast_finish: true
-  allow_failures:
-    - node_js: 5.1.1
+node_js: 0.10
+before_install:
+- npm install -g npm
 before_script:
-  - npm install -g bower grunt-cli
-  - gem install sass
-  - bower install
+- npm install -g bower gulp
+- bower install
 services: mongodb
+script:
+- npm test
+- npm run build
+after_success:
+- export COMMIT_MESSAGE="$(git --no-pager show -s --format='%h - %s (%ci) <%cn>' HEAD)"
+- cd dist
+- git init
+- git config --global user.email "openshift-provider@travis-ci.org"
+- git config --global user.name "Travis CI OpenShift Provider"
+- git add --all
+- git commit -am "$COMMIT_MESSAGE"
+deploy:
+  provider: openshift
+  user: $OPENSHIFT_USERNAME
+  password: $OPENSHIFT_PASSWORD
+  app: $OPENSHIFT_APP
+  domain: $OPENSHIFT_DOMAIN
+  on:
+    repo: amercier/node-openshift-sandbox
+    branch: master
+  skip_cleanup: true
