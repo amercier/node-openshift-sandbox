@@ -1,8 +1,14 @@
-# node-js-open-shift-sandbox
+node-js-open-shift-sandbox
+==========================
+
+[![Build Status](https://img.shields.io/travis/amercier/node-openshift-sandbox/master.svg?style=flat-square)](https://travis-ci.org/amercier/node-openshift-sandbox)
+[![Dependency Status](http://img.shields.io/gemnasium/amercier/node-openshift-sandbox.svg?style=flat-square)](https://gemnasium.com/amercier/node-openshift-sandbox)
+
 
 This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 3.4.2.
 
-## Getting Started
+Getting Started
+---------------
 
 ### Prerequisites
 
@@ -23,10 +29,18 @@ This project was generated with the [Angular Full-Stack Generator](https://githu
 
 4. Run `gulp serve` to start the development server. It should automatically open the client in your browser when ready.
 
-## Build & development
+Build & development
+-------------------
 
-Run `grunt build` for building and `grunt serve` for preview.
+Run `npm run build` for building and `npm start` for preview.
 
-## Testing
+Testing
+-------
 
 Running `npm test` will run the unit tests with karma.
+
+Deployment
+----------
+
+This application is deployed on [OpenShift](https://www.openshift.com/) by [Travis CI](https://travis-ci.org/). Successful builds on `master` branch are automatically
+deployed.
